@@ -10,3 +10,4 @@
 **Note:**
 > Not tested fully.
 > This is beta.
+> Now client is only linux(apt based supported or tested - partially)
