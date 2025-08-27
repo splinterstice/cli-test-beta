@@ -3,6 +3,10 @@
 **Features:**
 - Pure p2p with decentralization.
 - Uses signalling server(acts as directory than a server) for precommunication.
+- Creating for hakers environment liking peoples.
+- Anonymous system
+- No history saved any place
 
 **Note:**
 > Not tested fully.
+> This is beta.
