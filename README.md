@@ -8,6 +8,6 @@
 - No history saved any place
 
 **Note:**
-> Not tested fully.
-> This is beta.
+> Not tested fully./n
+> This is beta./n
 > Now client is only linux(apt based supported or tested - partially)
