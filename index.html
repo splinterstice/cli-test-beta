@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Splinterstice — decentralized IM for niche miscellaneous hidden services on Tor and I2P. Front page mockup for the .onion mirror and eepsite." />
+  <title>Splinterstice // .onion + eepsite mirror</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="brand">
+      <span class="glitch" data-text="SPLINTERSTICE">SPLINTERSTICE</span>
+      <span class="tag">// miscellaneous hidden service IM</span>
+    </div>
+
+    <nav class="net-toggle" aria-label="Network mirror selector">
+      <button type="button" class="net active" data-net="tor" aria-pressed="true">
+        <span class="dot tor"></span> Tor
+      </button>
+      <button type="button" class="net" data-net="i2p" aria-pressed="false">
+        <span class="dot i2p"></span> I2P
+      </button>
+      <button type="button" class="net" data-net="clearnet" aria-pressed="false" disabled>
+        <span class="dot clear"></span> Clearnet (n/a)
+      </button>
+    </nav>
+  </header>
+
+  <main id="main" class="grid">
+
+    <section class="card hero" aria-labelledby="hero-title">
+      <p class="eyebrow">/ mirror landing</p>
+      <h1 id="hero-title">Decentralized IM for the rest of the hidden web.</h1>
+      <p class="lede">
+        For eccentric .onion hobbyists, obscure eepsite imageboards, niche
+        interest forums, shitposting hidden services, and whatever else
+        doesn't fit neatly under "dark-web" or "deep-web".
+      </p>
+
+      <div class="addr-block" role="group" aria-label="Mirror addresses">
+        <div class="addr">
+          <span class="addr-label">.onion</span>
+          <code id="onion-addr">splinterstice7example7placeholder7address7xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.onion</code>
+          <button type="button" class="copy" data-target="onion-addr" aria-label="Copy .onion address">copy</button>
+        </div>
+        <div class="addr">
+          <span class="addr-label">eepsite</span>
+          <code id="i2p-addr">splinterstice.i2p</code>
+          <button type="button" class="copy" data-target="i2p-addr" aria-label="Copy eepsite address">copy</button>
+        </div>
+        <div class="addr">
+          <span class="addr-label">b32</span>
+          <code id="b32-addr">placeholderbase32destinationexampleforsplinterstice.b32.i2p</code>
+          <button type="button" class="copy" data-target="b32-addr" aria-label="Copy b32 address">copy</button>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn primary" href="#join">Join the mesh</a>
+        <a class="btn ghost" href="https://github.com/splinterstice/splinterstice" rel="noopener">Source</a>
+        <a class="btn ghost" href="https://matrix.to/#/#splinterstice:midov.pl" rel="noopener">Matrix room</a>
+      </div>
+    </section>
+
+    <aside class="card status" aria-labelledby="status-title">
+      <h2 id="status-title">Node status</h2>
+      <ul class="status-list">
+        <li><span class="pill ok">up</span> tor hidden service</li>
+        <li><span class="pill ok">up</span> i2p eepsite</li>
+        <li><span class="pill warn">degraded</span> federation relay</li>
+        <li><span class="pill ok">up</span> media bucket</li>
+        <li><span class="pill off">offline</span> clearnet mirror</li>
+      </ul>
+      <p class="meta">last self-check: <time datetime="2026-05-15T22:00:00Z">2026-05-15 22:00 UTC</time></p>
+    </aside>
+
+    <section class="card features" aria-labelledby="features-title">
+      <h2 id="features-title">What this is</h2>
+      <ul class="feat-grid">
+        <li>
+          <h3>No clearnet leash</h3>
+          <p>Lives on Tor and I2P first. Clearnet is not a target, it's a fallback at best.</p>
+        </li>
+        <li>
+          <h3>Free speech absolutist</h3>
+          <p>Moderation is per-room, not platform-wide. No global thought police.</p>
+        </li>
+        <li>
+          <h3>Niche by design</h3>
+          <p>Built for miscellaneous hidden services. Not Discord. Not Matrix. Not Revolt.</p>
+        </li>
+        <li>
+          <h3>Self-hostable</h3>
+          <p>Run your own node behind your own onion or eepsite. Federate if you want.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="card rooms" aria-labelledby="rooms-title">
+      <h2 id="rooms-title">Featured rooms</h2>
+      <ol class="rooms-list">
+        <li>
+          <span class="hash">#</span>
+          <span class="room-name">general</span>
+          <span class="room-meta">42 online · tor+i2p</span>
+        </li>
+        <li>
+          <span class="hash">#</span>
+          <span class="room-name">imageboard-refugees</span>
+          <span class="room-meta">17 online · i2p</span>
+        </li>
+        <li>
+          <span class="hash">#</span>
+          <span class="room-name">analog-horror-lab</span>
+          <span class="room-meta">9 online · tor</span>
+        </li>
+        <li>
+          <span class="hash">#</span>
+          <span class="room-name">toku-and-kamen-rider</span>
+          <span class="room-meta">6 online · tor</span>
+        </li>
+        <li>
+          <span class="hash">#</span>
+          <span class="room-name">nsfl-memes</span>
+          <span class="room-meta">locked · invite only</span>
+        </li>
+      </ol>
+    </section>
+
+    <section id="join" class="card join" aria-labelledby="join-title">
+      <h2 id="join-title">Getting in</h2>
+      <ol class="steps">
+        <li>Use Tor Browser or an I2P router. No clearnet bridge.</li>
+        <li>Open the .onion or eepsite address above.</li>
+        <li>Generate a local keypair in-client. No email, no phone, no recovery.</li>
+        <li>Pick a room. Lurk first. Don't be a tourist.</li>
+      </ol>
+      <p class="warn-line">If you found this page via a search engine, you're on the clearnet preview. The real thing is on Tor/I2P.</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>&copy; <span id="year">2026</span> splinterstice. No cookies. No JS trackers. No telemetry.</p>
+    <p class="footer-links">
+      <a href="https://github.com/splinterstice" rel="noopener">github</a> ·
+      <a href="https://matrix.to/#/#splinterstice:midov.pl" rel="noopener">matrix</a> ·
+      <a href="#main">top</a>
+    </p>
+  </footer>
+
+  <script>
+    // tiny, dependency-free interactivity. no tracking, no remote calls.
+    (function () {
+      var year = document.getElementById('year');
+      if (year) year.textContent = String(new Date().getFullYear());
+
+      var buttons = document.querySelectorAll('.net');
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (b.disabled) return;
+          buttons.forEach(function (x) {
+            x.classList.remove('active');
+            x.setAttribute('aria-pressed', 'false');
+          });
+          b.classList.add('active');
+          b.setAttribute('aria-pressed', 'true');
+          document.body.setAttribute('data-net', b.dataset.net);
+        });
+      });
+
+      document.querySelectorAll('.copy').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var t = document.getElementById(btn.dataset.target);
+          if (!t) return;
+          var text = t.textContent || '';
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () {
+              flash(btn, 'copied');
+            }, function () {
+              flash(btn, 'err');
+            });
+          } else {
+            flash(btn, 'copy?');
+          }
+        });
+      });
+
+      function flash(el, msg) {
+        var old = el.textContent;
+        el.textContent = msg;
+        setTimeout(function () { el.textContent = old; }, 900);
+      }
+    })();
+  </script>
+</body>
+</html>

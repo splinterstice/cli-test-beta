@@ -1,0 +1,124 @@
+name: Quality checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  format:
+    name: Prettier format check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run Prettier
+        run: |
+          npx --yes prettier@3.3.3 --check "**/*.{html,css,md,json,yml,yaml}" \
+            --ignore-path .gitignore || {
+              echo "::error::Prettier found unformatted files. Run: npx prettier --write ."
+              exit 1
+            }
+
+  htmllint:
+    name: HTML lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Write htmlhint config
+        run: |
+          cat > .htmlhintrc <<'JSON'
+          {
+            "tagname-lowercase": true,
+            "attr-lowercase": true,
+            "attr-value-double-quotes": true,
+            "doctype-first": true,
+            "tag-pair": true,
+            "spec-char-escape": true,
+            "id-unique": true,
+            "src-not-empty": true,
+            "attr-no-duplication": true,
+            "title-require": true,
+            "alt-require": true,
+            "doctype-html5": true
+          }
+          JSON
+
+      - name: Run HTMLHint
+        run: npx --yes htmlhint@1.1.4 "**/*.html" --config .htmlhintrc
+
+  csslint:
+    name: CSS lint (Stylelint)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Write stylelint config
+        run: |
+          cat > .stylelintrc.json <<'JSON'
+          {
+            "extends": ["stylelint-config-standard"],
+            "rules": {
+              "no-descending-specificity": null,
+              "selector-class-pattern": null,
+              "custom-property-empty-line-before": null,
+              "declaration-block-no-redundant-longhand-properties": null,
+              "alpha-value-notation": null,
+              "color-function-notation": null
+            }
+          }
+          JSON
+
+      - name: Install Stylelint
+        run: npm install --no-save stylelint@16.6.1 stylelint-config-standard@36.0.0
+
+      - name: Run Stylelint
+        run: npx stylelint "**/*.css"
+
+  links:
+    name: Link check (Lychee)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --max-concurrency 8
+            --accept 200,206,429
+            --exclude-mail
+            --exclude '.*\.onion.*'
+            --exclude '.*\.i2p.*'
+            --exclude 'matrix\.to'
+            './**/*.html'
+            './**/*.md'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
